@@ -1,5 +1,77 @@
-body {
-    background-color: white;
+@import "fonts";
+@import "variables";
+@import "mixins";
+
+// Assets:
+// Fonts: WorkSans, LarishNeue
+// Colors: #fff / #000
+
+// Hints:
+// search for -webkit-text-stroke and -webkit-text-stroke-color
+
+// button RSVP (répondez s'il vous plaît)
+
+* {
     margin: 0;
+    padding: 0;
+}
+body {
+    font-family: $fontWork;
 }
 
+h1 {
+    font-family: $fontLarish;
+    font-size: 6rem;
+}
+
+#intro {
+    height: 100vh;
+    padding: 0% 6%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: $colorDark;
+    color: $colorLight;
+
+    font-family: $fontWork;
+    text-align: center;
+
+    .textArea {
+        & h1 {
+            line-height: 0.8;
+        }
+        span {
+            color: $colorDark;
+            -webkit-text-stroke: 1px $colorLight;
+        }
+        p {
+            padding: 4%;
+        }
+    }
+
+    .grizzly {
+        transform: scale(1.5);
+        align-self: flex-end;
+        margin-bottom: 4%;
+    }
+    .rsvp {
+        @include rsvpButton;
+        align-self: flex-end;
+        margin-bottom: 3%;
+    }
+}
+
+#stats {
+    height: 200vh;
+    padding: 0% 6%;
+
+    background-color: $colorDark;
+    color: $colorLight;
+
+    h1 {
+        font-family: $fontLarish;
+        font-size: 6rem;
+    }
+}

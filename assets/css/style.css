@@ -1,6 +1,81 @@
-body {
-  background-color: white;
+@font-face {
+  font-family: "LarishNeue";
+  src: url("../fonts/Larish Neue Semibold.woff2") format("woff2"), url("../fonts/LarishNeueSemibold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("../fonts/OpenSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+* {
   margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "OpenSans";
+}
+
+h1 {
+  font-family: "LarishNeue";
+  font-size: 6rem;
+}
+
+#intro {
+  height: 100vh;
+  padding: 0% 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  font-family: "OpenSans";
+  text-align: center;
+}
+#intro .textArea h1 {
+  line-height: 0.8;
+}
+#intro .textArea span {
+  color: #000;
+  -webkit-text-stroke: 1px #fff;
+}
+#intro .textArea p {
+  padding: 4%;
+}
+#intro .grizzly {
+  transform: scale(1.5);
+  align-self: flex-end;
+  margin-bottom: 4%;
+}
+#intro .rsvp {
+  color: #fff;
+  font-size: 2rem;
+  text-decoration: none;
+  border: 1px solid #fff;
+  padding: 1% 3%;
+  transition: all 0.5s;
+  align-self: flex-end;
+  margin-bottom: 3%;
+}
+#intro .rsvp:hover {
+  background: #fff;
+  color: #000;
+}
+
+#stats {
+  height: 200vh;
+  padding: 0% 6%;
+  background-color: #000;
+  color: #fff;
+}
+#stats h1 {
+  font-family: "LarishNeue";
+  font-size: 6rem;
 }
 
 /*# sourceMappingURL=style.css.map */
