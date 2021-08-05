@@ -1,6 +1,7 @@
 @import "fonts";
 @import "variables";
 @import "mixins";
+@import "animations";
 
 // Assets:
 // Fonts: WorkSans, LarishNeue
@@ -15,16 +16,28 @@
     margin: 0;
     padding: 0;
 }
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: $fontWork;
 }
 
 h1 {
     font-family: $fontLarish;
-    font-size: 6rem;
+    font-size: 7rem;
 }
 
-#intro {
+.stroke {
+    color: $colorDark;
+    -webkit-text-stroke: 1px $colorLight;
+    font-weight: 400;
+}
+
+//****************************************************************************
+
+.intro {
     height: 100vh;
     padding: 0% 6%;
 
@@ -38,15 +51,11 @@ h1 {
     font-family: $fontWork;
     text-align: center;
 
-    .textArea {
+    &_text {
         & h1 {
             line-height: 0.8;
         }
-        span {
-            color: $colorDark;
-            -webkit-text-stroke: 1px $colorLight;
-        }
-        p {
+        & p {
             padding: 4%;
         }
     }
@@ -55,6 +64,10 @@ h1 {
         transform: scale(1.5);
         align-self: flex-end;
         margin-bottom: 4%;
+        transition: transform 0.5s;
+        &:hover {
+            transform: scale(2);
+        }
     }
     .rsvp {
         @include rsvpButton;
@@ -63,15 +76,83 @@ h1 {
     }
 }
 
-#stats {
-    height: 200vh;
-    padding: 0% 6%;
+//****************************************************************************
 
+.info {
+    background-color: $colorDark;
+    padding: 6% 12% 0% 6%;
+
+    &_h1 {
+        color: $colorLight;
+        font-size: 6rem;
+    }
+}
+
+//****************************************************************************
+
+.stats {
     background-color: $colorDark;
     color: $colorLight;
 
-    h1 {
-        font-family: $fontLarish;
-        font-size: 6rem;
+    padding-left: 6%;
+    display: grid;
+    grid-template-columns: 6fr 5fr;
+
+    &_text {
+        align-self: end;
+        p {
+            padding: 2% 0;
+        }
     }
+}
+
+//****************************************************************************
+
+.mission {
+}
+
+//****************************************************************************
+
+.artists {
+    .golden_bear {
+        background: $colorDark;
+    }
+
+    // overflow: hidden is neccessary
+    overflow: hidden;
+    text-align: right;
+    .animatedCircle {
+        width: 30%;
+        transform: translate(85%);
+
+        animation: $animatedCircle 5s linear 0s infinite forwards;
+    }
+    .poppy_bear {
+        @extend .golden_bear;
+        background: $colorLight;
+    }
+}
+
+//****************************************************************************
+
+.contact {
+}
+
+//****************************************************************************
+
+.animatedText {
+    font-family: $fontLarish;
+
+    background: $colorLight;
+    color: $colorDark;
+    transform: rotate(45deg);
+    font-size: 8rem;
+    font-weight: 600;
+    & span {
+        color: $colorLight;
+        -webkit-text-stroke: 1px $colorDark;
+        font-weight: 400;
+    }
+
+    animation: $animatedText 2s linear 0s infinite alternate;
 }
