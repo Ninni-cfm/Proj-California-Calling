@@ -194,7 +194,7 @@ html .stroke {
   display: flex;
   flex-direction: column;
   justify-items: center;
-  padding: 0% 7%;
+  padding: 10% 7%;
 }
 .artists_golden > p {
   padding-bottom: 2rem;
@@ -203,8 +203,11 @@ html .stroke {
   display: flex;
 }
 .artists_golden_text_left {
-  width: 100%;
+  width: 50%;
   line-height: 0.9;
+}
+.artists_golden_text_right {
+  width: 50%;
 }
 .artists_golden_text_right > p:first-of-type {
   font-family: "LarishNeue";
@@ -217,7 +220,7 @@ html .stroke {
   display: flex;
   flex-direction: column;
   justify-items: center;
-  padding: 0% 7%;
+  padding: 10% 7%;
 }
 .artists_poppy > p {
   padding-bottom: 2rem;
@@ -226,8 +229,11 @@ html .stroke {
   display: flex;
 }
 .artists_poppy_text_left {
-  width: 100%;
+  width: 50%;
   line-height: 0.9;
+}
+.artists_poppy_text_right {
+  width: 50%;
 }
 .artists_poppy_text_right > p:first-of-type {
   font-family: "LarishNeue";

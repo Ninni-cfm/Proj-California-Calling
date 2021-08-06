@@ -23,7 +23,7 @@
     flex-direction: column;
     justify-items: center;
 
-    padding: 0% $defaultMarginHorizontal;
+    padding: 10% $defaultMarginHorizontal;
     & > p {
         padding-bottom: 2rem;
     }
@@ -32,25 +32,17 @@
         display: flex;
 
         &_left {
-            width: 100%;
+            width: 50%;
             line-height: 0.9;
         }
 
-        // h1 {
-        //     font-size: 1.2rem;
-        //     padding-bottom: 0.9rem;
-        // }
-        // // & :last-child {
-        // }
-        // }
         &_right {
-            // align-self: center;
+            width: 50%;
             > p:first-of-type {
                 font-family: $fontLarish;
                 font-size: 1.9rem;
                 padding-bottom: 1.6rem;
             }
-            // padding: 15% 0% 0%;
         }
     }
 }
