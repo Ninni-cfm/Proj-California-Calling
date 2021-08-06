@@ -1,7 +1,9 @@
-@import "fonts";
-@import "variables";
-@import "mixins";
-@import "animations";
+//****************************************************************************
+// life is easier if all kind of things are sorted (somehow...)
+@import "imports/fonts";
+@import "imports/variables";
+@import "imports/mixins";
+@import "imports/animations";
 
 // Assets:
 // Fonts: WorkSans, LarishNeue
@@ -18,30 +20,38 @@
 }
 html {
     scroll-behavior: smooth;
-}
+    img {
+        width: 100%;
+    }
 
-body {
-    font-family: $fontWork;
-}
+    body {
+        font-family: $fontWork;
+    }
 
-h1 {
-    font-family: $fontLarish;
-    font-size: 7rem;
-}
+    h1 {
+        font-family: $fontLarish;
+        font-size: 7rem;
+    }
+    h2 {
+        font-family: $fontLarish;
+        font-size: 4rem;
+    }
 
-.stroke {
-    color: $colorDark;
-    -webkit-text-stroke: 1px $colorLight;
-    font-weight: 400;
+    .stroke {
+        color: $colorDark;
+        -webkit-text-stroke: 1px $colorLight;
+        font-weight: 400;
+    }
 }
 
 //****************************************************************************
 
 .intro {
-    height: 100vh;
-    padding: 0% 6%;
+    padding: 0% $defaultMarginHorizontal;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     justify-content: space-between;
     align-items: center;
 
@@ -49,9 +59,21 @@ h1 {
     color: $colorLight;
 
     font-family: $fontWork;
-    text-align: center;
+
+    &_line {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+        border-right: 1px solid $colorLight;
+        height: 30vh;
+        opacity: 0.3;
+        align-self: start;
+    }
 
     &_text {
+        grid-column: 1 / span 4;
+        grid-row: 1 / span 3;
+        text-align: center;
+
         & h1 {
             line-height: 0.8;
         }
@@ -61,18 +83,32 @@ h1 {
     }
 
     .grizzly {
-        transform: scale(1.5);
-        align-self: flex-end;
-        margin-bottom: 4%;
+        grid-column: 1/2;
+
+        grid-row: 3/4;
+        justify-self: start;
+        align-self: end;
+
+        margin-bottom: 20%;
+
+        width: 5vw;
         transition: transform 0.5s;
         &:hover {
-            transform: scale(2);
+            transform: scale(1.5);
         }
     }
     .rsvp {
         @include rsvpButton;
-        align-self: flex-end;
-        margin-bottom: 3%;
+
+        grid-row: 3/4;
+
+        grid-column: 4/5;
+        justify-self: end;
+        align-self: end;
+
+        margin-bottom: 20%;
+
+        padding: 5% 15%;
     }
 }
 
@@ -80,7 +116,7 @@ h1 {
 
 .info {
     background-color: $colorDark;
-    padding: 6% 12% 0% 6%;
+    padding: $defaultMarginHorizontal 12% 0% $defaultMarginHorizontal;
 
     &_h1 {
         color: $colorLight;
@@ -94,9 +130,10 @@ h1 {
     background-color: $colorDark;
     color: $colorLight;
 
-    padding-left: 6%;
+    padding-left: $defaultMarginHorizontal;
     display: grid;
     grid-template-columns: 6fr 5fr;
+    padding-bottom: 20vh;
 
     &_text {
         align-self: end;
@@ -108,51 +145,118 @@ h1 {
 
 //****************************************************************************
 
-.mission {
+.action {
+    min-height: 100vh;
+
+    // background: linear-gradient(
+    //     $colorDark 0 5%,
+    //     $colorLight 5% 95%,
+    //     $colorDark 95% 100%
+    // );
+    background: $colorLight;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &_text {
+        width: 35%;
+        h1 {
+            font-size: 5.5rem;
+        }
+        p {
+            padding-right: 7%;
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.8;
+        }
+    }
+    &_img1 {
+        @include actionSetLocationSize(25vw, 0, 25%);
+    }
+    &_img2 {
+        @include actionSetLocationSize(-35vw, 5vh, 20%);
+    }
+    &_img3 {
+        @include actionSetLocationSize(0, -5vh, 20%, flex-end);
+    }
+    &_img4 {
+        @include actionSetLocationSize(-22vw, -5vh, 25%);
+    }
+    &_img5 {
+        @include actionSetLocationSize(+27vw, -7vh, 20%);
+    }
+    &_img6 {
+        @include actionSetLocationSize(0, -20vh, 20%, flex-start);
+    }
+    &_img7 {
+        @include actionSetLocationSize(15vw, 0, 30%);
+    }
 }
 
 //****************************************************************************
-
 .artists {
-    .golden_bear {
+    &_golden {
         background: $colorDark;
-    }
+        color: $colorLight;
 
-    // overflow: hidden is neccessary
-    overflow: hidden;
-    text-align: right;
-    .animatedCircle {
-        width: 30%;
-        transform: translate(85%);
-
-        animation: $animatedCircle 5s linear 0s infinite forwards;
+        @include articleBearContent();
     }
-    .poppy_bear {
-        @extend .golden_bear;
+    &_poppy {
         background: $colorLight;
+        color: $colorDark;
+
+        @include articleBearContent();
+    }
+
+    &_animation {
+        // overflow: hidden is neccessary fo the animated circle
+        overflow: hidden;
+        &_img {
+            width: 30%;
+            animation: $animatedCircle 5s linear 0s infinite forwards;
+        }
     }
 }
 
 //****************************************************************************
 
 .contact {
-}
+    min-height: 100vh;
+    overflow: hidden;
 
-//****************************************************************************
-
-.animatedText {
-    font-family: $fontLarish;
-
-    background: $colorLight;
-    color: $colorDark;
-    transform: rotate(45deg);
-    font-size: 8rem;
-    font-weight: 600;
-    & span {
-        color: $colorLight;
-        -webkit-text-stroke: 1px $colorDark;
-        font-weight: 400;
+    .rsvp {
+        @include rsvpButton;
+        align-self: flex-end;
+        margin-bottom: 3%;
     }
 
-    animation: $animatedText 2s linear 0s infinite alternate;
+    &_animation {
+        border: 1px solid white;
+
+        &_text {
+            transform: rotate(45deg);
+            font-family: $fontLarish;
+
+            white-space: nowrap;
+
+            background: $colorLight;
+            opacity: 0.9;
+            color: $colorDark;
+            font-size: 6rem;
+            font-weight: 600;
+            & span {
+                color: $colorLight;
+                -webkit-text-stroke: 1px $colorDark;
+                font-weight: 400;
+            }
+
+            animation: $animatedText 2s linear 0s infinite alternate;
+        }
+    }
+
+    footer {
+        background: $colorDark;
+        color: $colorLight;
+    }
 }

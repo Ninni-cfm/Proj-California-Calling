@@ -1,0 +1,56 @@
+@mixin rsvpButton {
+    color: $colorLight;
+
+    font-size: 1rem;
+    text-decoration: none;
+    border: 1px solid $colorLight;
+    transition: all 0.5s;
+
+    &:hover {
+        background: $colorLight;
+        color: $colorDark;
+    }
+}
+
+@mixin actionSetLocationSize($xOffset, $yOffset, $width, $align: unset) {
+    width: $width;
+    transform: translate($xOffset, $yOffset);
+    align-self: $align;
+}
+
+@mixin articleBearContent {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+
+    padding: 0% $defaultMarginHorizontal;
+    & > p {
+        padding-bottom: 2rem;
+    }
+
+    &_text {
+        display: flex;
+
+        &_left {
+            width: 100%;
+            line-height: 0.9;
+        }
+
+        // h1 {
+        //     font-size: 1.2rem;
+        //     padding-bottom: 0.9rem;
+        // }
+        // // & :last-child {
+        // }
+        // }
+        &_right {
+            // align-self: center;
+            > p:first-of-type {
+                font-family: $fontLarish;
+                font-size: 1.9rem;
+                padding-bottom: 1.6rem;
+            }
+            // padding: 15% 0% 0%;
+        }
+    }
+}
