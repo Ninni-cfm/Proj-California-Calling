@@ -199,6 +199,9 @@ html .stroke {
   align-self: inherit;
 }
 
+.bears {
+  overflow: hidden;
+}
 .bears_golden {
   display: flex;
   flex-direction: column;
@@ -214,6 +217,7 @@ html .stroke {
 }
 .bears_golden_text_left {
   width: 50%;
+  padding-right: 10%;
   line-height: 0.9;
 }
 .bears_golden_text_right {
@@ -256,6 +260,7 @@ html .stroke {
 }
 .bears_poppy_text_left {
   width: 50%;
+  padding-right: 10%;
   line-height: 0.9;
 }
 .bears_poppy_text_right {
@@ -293,21 +298,21 @@ html .stroke {
   align-self: inherit;
 }
 .bears_animation {
-  overflow: hidden;
   position: relative;
+  display: inline-block;
   top: -10vh;
   left: 75vw;
-  z-index: 0;
+  height: auto;
 }
 .bears_animation_img {
-  width: 35%;
+  width: 50%;
   animation: animatedCircle 5s linear 0s infinite forwards;
 }
 
 .contact {
   min-height: 100vh;
-  overflow: hidden;
   background: #000;
+  color: #fff;
 }
 .contact .rsvp {
   color: #fff;
@@ -323,10 +328,13 @@ html .stroke {
   color: #000;
 }
 .contact_animation {
-  border: 1px solid white;
-  transform: rotate(45deg) translate(30vw, -5vh);
+  overflow: hidden;
+  height: 100vh;
+  position: absolute;
 }
 .contact_animation_text {
+  border: 5px solid red;
+  transform: rotate(45deg);
   font-family: "LarishNeue";
   white-space: nowrap;
   background: #fff;

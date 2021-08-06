@@ -194,6 +194,9 @@ html {
 
 //****************************************************************************
 .bears {
+    // overflow: hidden is neccessary fo the animated circle
+    overflow: hidden;
+
     &_golden {
         @include articleBearContent();
 
@@ -219,16 +222,15 @@ html {
     }
 
     &_animation {
-        // overflow: hidden is neccessary fo the animated circle
-        overflow: hidden;
         position: relative;
+        display: inline-block;
         top: -10vh;
         left: 75vw;
+        height: auto;
         &_img {
-            width: 35%;
+            width: 50%;
             animation: $animatedCircle 5s linear 0s infinite forwards;
         }
-        z-index: 0;
     }
 }
 
@@ -236,8 +238,9 @@ html {
 
 .contact {
     min-height: 100vh;
-    overflow: hidden;
+
     background: $colorDark;
+    color: $colorLight;
 
     .rsvp {
         @include rsvpButton;
@@ -246,10 +249,19 @@ html {
     }
 
     &_animation {
-        border: 1px solid white;
-        transform: rotate(45deg) translate(30vw, -5vh);
+        overflow: hidden;
+        height: 100vh;
+        // for the rotation the element must be centered for a correct pivot point
+        // display: flex;
+        // justify-items: center;
+        // align-items: center;
+
+        // the element must be also moved to the right!
+        position: absolute;
 
         &_text {
+            border: 5px solid red;
+            transform: rotate(45deg);
             font-family: $fontLarish;
 
             white-space: nowrap;
