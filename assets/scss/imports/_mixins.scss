@@ -12,7 +12,8 @@
     }
 }
 
-@mixin actionSetLocationSize($xOffset, $yOffset, $width, $align: unset) {
+@mixin actionSetLocationSize($xOffset, $yOffset, $width, $align: inherit) {
+    position: relative;
     width: $width;
     transform: translate($xOffset, $yOffset);
     align-self: $align;
@@ -21,9 +22,8 @@
 @mixin articleBearContent {
     display: flex;
     flex-direction: column;
-    justify-items: center;
+    // justify-items: center;
 
-    padding: 10% $defaultMarginHorizontal;
     & > p {
         padding-bottom: 2rem;
     }
@@ -43,6 +43,19 @@
                 font-size: 1.9rem;
                 padding-bottom: 1.6rem;
             }
+        }
+    }
+
+    &_images {
+        display: flex;
+        align-items: center;
+        z-index: 1;
+
+        &_img1 {
+            @include actionSetLocationSize(0, 15vh, 65%);
+        }
+        &_img2 {
+            @include actionSetLocationSize(-5vw, 17.5vh, 35%);
         }
     }
 }

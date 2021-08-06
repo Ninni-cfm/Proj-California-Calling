@@ -67,6 +67,7 @@ html {
         height: 30vh;
         opacity: 0.3;
         align-self: start;
+        margin-bottom: 5vh;
     }
 
     &_text {
@@ -146,78 +147,88 @@ html {
 //****************************************************************************
 
 .action {
-    min-height: 100vh;
-
-    // background: linear-gradient(
-    //     $colorDark 0 5%,
-    //     $colorLight 5% 95%,
-    //     $colorDark 95% 100%
-    // );
     background: $colorLight;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 
     &_text {
-        width: 35%;
+        width: 38vw;
         h1 {
             font-size: 5.5rem;
+            font-weight: 900;
+            line-height: 1;
+            padding-bottom: 0.8rem;
         }
         p {
-            padding-right: 7%;
-            font-size: 1.1rem;
+            font-size: 1em;
+            letter-spacing: 0.06rem;
             font-weight: 600;
             line-height: 1.8;
         }
     }
     &_img1 {
-        @include actionSetLocationSize(25vw, 0, 25%);
+        @include actionSetLocationSize(25vw, -7vw, 35vmin);
     }
     &_img2 {
-        @include actionSetLocationSize(-35vw, 5vh, 20%);
+        @include actionSetLocationSize(-35vw, 5vh, 25vmin);
     }
     &_img3 {
-        @include actionSetLocationSize(0, -5vh, 20%, flex-end);
+        @include actionSetLocationSize(0, -5vh, 25vmin, flex-end);
     }
     &_img4 {
-        @include actionSetLocationSize(-22vw, -5vh, 25%);
+        @include actionSetLocationSize(-22vw, -5vh, 32vmin);
     }
     &_img5 {
-        @include actionSetLocationSize(+27vw, -7vh, 20%);
+        @include actionSetLocationSize(+27vw, -7vh, 30vmin);
     }
     &_img6 {
-        @include actionSetLocationSize(0, -20vh, 20%, flex-start);
+        @include actionSetLocationSize(0, -17vh, 25vmin, flex-start);
     }
     &_img7 {
-        @include actionSetLocationSize(15vw, 0, 30%);
+        @include actionSetLocationSize(15vw, 6vh, 40vmin);
     }
 }
 
 //****************************************************************************
-.artists {
-    // padding: 0% $defaultMarginHorizontal;
-
+.bears {
     &_golden {
+        @include articleBearContent();
+
         background: $colorDark;
         color: $colorLight;
 
-        @include articleBearContent();
+        padding: 20vh $defaultMarginHorizontal 0;
     }
     &_poppy {
+        @include articleBearContent();
+
         background: $colorLight;
         color: $colorDark;
 
-        @include articleBearContent();
+        padding: 0 $defaultMarginHorizontal 25vh;
+
+        &_images {
+            flex-direction: row-reverse;
+            &_img2 {
+                @include actionSetLocationSize(+5vw, 17.5vh, 35%);
+            }
+        }
     }
 
     &_animation {
         // overflow: hidden is neccessary fo the animated circle
         overflow: hidden;
+        position: relative;
+        top: -10vh;
+        left: 75vw;
         &_img {
-            width: 30%;
+            width: 35%;
             animation: $animatedCircle 5s linear 0s infinite forwards;
         }
+        z-index: 0;
     }
 }
 
@@ -226,6 +237,7 @@ html {
 .contact {
     min-height: 100vh;
     overflow: hidden;
+    background: $colorDark;
 
     .rsvp {
         @include rsvpButton;
@@ -235,9 +247,9 @@ html {
 
     &_animation {
         border: 1px solid white;
+        transform: rotate(45deg) translate(30vw, -5vh);
 
         &_text {
-            transform: rotate(45deg);
             font-family: $fontLarish;
 
             white-space: nowrap;
