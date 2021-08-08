@@ -5,24 +5,14 @@
 @import "imports/mixins";
 @import "imports/animations";
 
-// Assets:
-// Fonts: WorkSans, LarishNeue
-// Colors: #fff / #000
-
-// Hints:
-// search for -webkit-text-stroke and -webkit-text-stroke-color
-
-// button RSVP (répondez s'il vous plaît)
-
+//****************************************************************************
+//  Some global settings
 * {
     margin: 0;
     padding: 0;
 }
 html {
     scroll-behavior: smooth;
-    img {
-        width: 100%;
-    }
 
     body {
         font-family: $fontWork;
@@ -30,7 +20,7 @@ html {
 
     h1 {
         font-family: $fontLarish;
-        font-size: 7rem;
+        font-size: 6rem;
     }
     h2 {
         font-family: $fontLarish;
@@ -45,76 +35,59 @@ html {
 }
 
 //****************************************************************************
-
+//  Intro section
 .intro {
-    padding: 0% $defaultMarginHorizontal;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    justify-content: space-between;
-    align-items: center;
-
     background-color: $colorDark;
     color: $colorLight;
 
-    font-family: $fontWork;
+    padding: 0% $defaultMarginHorizontal;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &_line {
-        grid-column: 1 / 3;
-        grid-row: 1 / 2;
         border-right: 1px solid $colorLight;
+        width: 50%;
         height: 30vh;
         opacity: 0.3;
         align-self: start;
-        margin-bottom: 5vh;
+        margin-bottom: 1vh;
     }
 
     &_text {
-        grid-column: 1 / span 4;
-        grid-row: 1 / span 3;
+        padding: 0 0 25%;
         text-align: center;
 
         & h1 {
             line-height: 0.8;
         }
         & p {
-            padding: 4%;
+            padding: 2%;
         }
     }
 
-    .grizzly {
-        grid-column: 1/2;
+    &_links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        grid-row: 3/4;
-        justify-self: start;
-        align-self: end;
-
-        margin-bottom: 20%;
-
-        width: 5vw;
-        transition: transform 0.5s;
-        &:hover {
-            transform: scale(1.5);
+        .grizzly {
+            width: 8vw;
+            transition: transform 0.5s;
+            &:hover {
+                transform: scale(1.2);
+            }
         }
-    }
-    .rsvp {
-        @include rsvpButton;
-
-        grid-row: 3/4;
-
-        grid-column: 4/5;
-        justify-self: end;
-        align-self: end;
-
-        margin-bottom: 20%;
-
-        padding: 5% 15%;
+        .rsvp {
+            @include rsvpButton;
+            padding: 1.5% 4%;
+        }
     }
 }
 
 //****************************************************************************
-
+//  Info section: What's this page about
 .info {
     background-color: $colorDark;
     padding: $defaultMarginHorizontal 12% 0% $defaultMarginHorizontal;
@@ -126,7 +99,7 @@ html {
 }
 
 //****************************************************************************
-
+//  Stats section: some statistics
 .stats {
     background-color: $colorDark;
     color: $colorLight;
@@ -145,7 +118,7 @@ html {
 }
 
 //****************************************************************************
-
+//  Action section: The California Grizzly as the crest animal for our action
 .action {
     background: $colorLight;
 
@@ -193,6 +166,7 @@ html {
 }
 
 //****************************************************************************
+//  Bears section: artist designs
 .bears {
     // overflow: hidden is neccessary fo the animated circle
     overflow: hidden;
@@ -229,60 +203,84 @@ html {
         height: auto;
         &_img {
             width: 50%;
-            animation: $animatedCircle 5s linear 0s infinite forwards;
+            animation: animatedCircle 5s linear 0s infinite forwards;
         }
     }
 }
 
 //****************************************************************************
-
+//  Contact section: save the day, links to social media and NGOs
 .contact {
     min-height: 100vh;
 
     background: $colorDark;
     color: $colorLight;
 
+    padding: 0 $defaultMarginHorizontal;
+
+    // set overflow to hidden to hide parts of the banner which are out of the section!
+    overflow: hidden;
+
+    &_text {
+        padding-top: 10%;
+        width: 40%;
+        > h3 {
+            font-family: $fontLarish;
+            font-size: 2em;
+            padding: 5% 0 10%;
+        }
+    }
+
     .rsvp {
         @include rsvpButton;
-        align-self: flex-end;
+        padding: 3% 8%;
         margin-bottom: 3%;
+        font-weight: 600;
     }
 
     &_animation {
-        overflow: hidden;
-        height: 100vh;
-        // for the rotation the element must be centered for a correct pivot point
-        // display: flex;
-        // justify-items: center;
-        // align-items: center;
+        display: flex;
+        justify-items: flex-end;
+        align-items: center;
 
-        // the element must be also moved to the right!
-        position: absolute;
+        width: 300vw;
 
         &_text {
-            border: 5px solid red;
             transform: rotate(45deg);
             font-family: $fontLarish;
 
-            white-space: nowrap;
-
             background: $colorLight;
-            opacity: 0.9;
             color: $colorDark;
+
+            opacity: 0.9;
             font-size: 6rem;
             font-weight: 600;
             & span {
                 color: $colorLight;
                 -webkit-text-stroke: 1px $colorDark;
-                font-weight: 400;
             }
 
-            animation: $animatedText 2s linear 0s infinite alternate;
+            animation: animatedText 5s linear 0s infinite forwards;
         }
     }
 
-    footer {
-        background: $colorDark;
-        color: $colorLight;
+    .footer {
+        padding-top: 20%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &_left {
+            &_social img {
+                width: 10%;
+            }
+            > p {
+                padding-top: 10%;
+            }
+        }
+
+        &_logos img {
+            width: 20%;
+        }
     }
 }

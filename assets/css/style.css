@@ -20,7 +20,14 @@
     transform: rotate(360deg);
   }
 }
-@keyframes animatedText {}
+@keyframes animatedText {
+  0% {
+    transform: rotate(45deg) translate(-40%, 250%);
+  }
+  100% {
+    transform: rotate(45deg) translate(10.5%, 250%);
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -29,15 +36,12 @@
 html {
   scroll-behavior: smooth;
 }
-html img {
-  width: 100%;
-}
 html body {
   font-family: "OpenSans";
 }
 html h1 {
   font-family: "LarishNeue";
-  font-size: 7rem;
+  font-size: 6rem;
 }
 html h2 {
   font-family: "LarishNeue";
@@ -50,62 +54,52 @@ html .stroke {
 }
 
 .intro {
-  padding: 0% 7%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  justify-content: space-between;
-  align-items: center;
   background-color: #000;
   color: #fff;
-  font-family: "OpenSans";
+  padding: 0% 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .intro_line {
-  grid-column: 1/3;
-  grid-row: 1/2;
   border-right: 1px solid #fff;
+  width: 50%;
   height: 30vh;
   opacity: 0.3;
   align-self: start;
-  margin-bottom: 5vh;
+  margin-bottom: 1vh;
 }
 .intro_text {
-  grid-column: 1/span 4;
-  grid-row: 1/span 3;
+  padding: 0 0 25%;
   text-align: center;
 }
 .intro_text h1 {
   line-height: 0.8;
 }
 .intro_text p {
-  padding: 4%;
+  padding: 2%;
 }
-.intro .grizzly {
-  grid-column: 1/2;
-  grid-row: 3/4;
-  justify-self: start;
-  align-self: end;
-  margin-bottom: 20%;
-  width: 5vw;
+.intro_links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.intro_links .grizzly {
+  width: 8vw;
   transition: transform 0.5s;
 }
-.intro .grizzly:hover {
-  transform: scale(1.5);
+.intro_links .grizzly:hover {
+  transform: scale(1.2);
 }
-.intro .rsvp {
+.intro_links .rsvp {
   color: #fff;
   font-size: 1rem;
   text-decoration: none;
   border: 1px solid #fff;
   transition: all 0.5s;
-  grid-row: 3/4;
-  grid-column: 4/5;
-  justify-self: end;
-  align-self: end;
-  margin-bottom: 20%;
-  padding: 5% 15%;
+  padding: 1.5% 4%;
 }
-.intro .rsvp:hover {
+.intro_links .rsvp:hover {
   background: #fff;
   color: #000;
 }
@@ -313,6 +307,17 @@ html .stroke {
   min-height: 100vh;
   background: #000;
   color: #fff;
+  padding: 0 7%;
+  overflow: hidden;
+}
+.contact_text {
+  padding-top: 10%;
+  width: 40%;
+}
+.contact_text > h3 {
+  font-family: "LarishNeue";
+  font-size: 2em;
+  padding: 5% 0 10%;
 }
 .contact .rsvp {
   color: #fff;
@@ -320,38 +325,48 @@ html .stroke {
   text-decoration: none;
   border: 1px solid #fff;
   transition: all 0.5s;
-  align-self: flex-end;
+  padding: 3% 8%;
   margin-bottom: 3%;
+  font-weight: 600;
 }
 .contact .rsvp:hover {
   background: #fff;
   color: #000;
 }
 .contact_animation {
-  overflow: hidden;
-  height: 100vh;
-  position: absolute;
+  display: flex;
+  justify-items: flex-end;
+  align-items: center;
+  width: 300vw;
 }
 .contact_animation_text {
-  border: 5px solid red;
   transform: rotate(45deg);
   font-family: "LarishNeue";
-  white-space: nowrap;
   background: #fff;
-  opacity: 0.9;
   color: #000;
+  opacity: 0.9;
   font-size: 6rem;
   font-weight: 600;
-  animation: animatedText 2s linear 0s infinite alternate;
+  animation: animatedText 5s linear 0s infinite forwards;
 }
 .contact_animation_text span {
   color: #fff;
   -webkit-text-stroke: 1px #000;
-  font-weight: 400;
 }
-.contact footer {
-  background: #000;
-  color: #fff;
+.contact .footer {
+  padding-top: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact .footer_left_social img {
+  width: 10%;
+}
+.contact .footer_left > p {
+  padding-top: 10%;
+}
+.contact .footer_logos img {
+  width: 20%;
 }
 
 /*# sourceMappingURL=style.css.map */

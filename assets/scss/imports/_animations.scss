@@ -8,4 +8,10 @@
 }
 
 @keyframes animatedText {
+    0% {
+        transform: rotate(45deg) translate(-40%, 250%);
+    }
+    100% {
+        transform: rotate(45deg) translate(10.5%, 250%);
+    }
 }
